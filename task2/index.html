@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular task 2 Validation form</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/style.css">
+
+</head>
+<body class="ng-scope" ng-app="app">
+<form name="registrationform" action="#" method="POST" autocomplete="off" novalidate>
+	<div class="form-group">
+		<label for="name" class="required">User Name</label>
+   		<input class="form-control" name="name" type="text" ng-model="name" name-validator placeholder="Enter your name" required="required">
+    	<div class="error-msgs" ng-messages="registrationform.name.$error">
+    		<div ng-show="registrationform.name.$error.required">User name is required</div>
+    		<div ng-message="englishSymbolsValidator">Your name should consistof only english symbols</div>
+        	<div ng-message="uppercaseValidator">Your name should start with capital letter</div>
+        	<div ng-message="sixCharactersValidator">Your name should consists of more then 3 letters</div>
+    	</div>
+	</div>
+	<div class="form-group">
+		<label for="age" class="required">Age</label>
+   		<input class="form-control" name="age" type="text" ng-model="age" age-validator placeholder="Enter your age" required="required">
+    	<div class="error-msgs" ng-messages="registrationform.age.$error">
+    		<div ng-show="registrationform.age.$error.required">Age is required</div>
+    		<div ng-message="isNumberValidator">Please, check your input. It's not a number</div>
+       		<div ng-message="ageRangeValidator">Age must be in 12 ... 100 age range</div>
+    	</div>
+	</div>
+	<div class="form-group">
+		<label for="date" class="required">Date of your birthday</label>
+   		<input class="form-control" name="date" type="text" date-format="DD-MM-YYYY" ng-model="date" date-validator placeholder="YYYY/MM/DD" required="required">
+    	<div class="error-msgs" ng-messages="registrationform.date.$error">
+    		<div ng-show="registrationform.date.$error.required">Date of your birthday is required</div>
+       		<div ng-message="dateFormatValidator">Incorrect date format</div>
+       		<div ng-message="isNumbersValidator">Please check your input data. It's not a numbers.</div>
+			<div ng-message="dateRangeValidator">Check your inpute data, wrong date.</div>
+       		<div ng-message="isDateValidator">This date - future date.</div>
+    	</div>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-default" ng-disabled="registrationform.$invalid">Register</button>
+	</div>
+</form>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular-messages/angular-messages.min.js"></script>
+<script src="node_modules/lodash/lodash.min.js"></script>
+
+<script src="app/scripts/nameValidator.js"></script>
+<script src="app/scripts/ageValidator.js"></script>
+<script src="app/scripts/dateValidator.js"></script>
+</body>
+</html>

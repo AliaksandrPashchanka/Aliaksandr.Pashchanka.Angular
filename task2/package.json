@@ -1,0 +1,12 @@
+{
+  "name": "task2",
+  "version": "1.0.0",
+  "description": "Form validation task 2 Angular",
+  "main": "index.html",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-messages": "1.5.8",
+    "lodash": "4.14.0",
+    "bootstrap": "3.3.7"
+  }
+}
